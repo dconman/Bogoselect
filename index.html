@@ -27,7 +27,7 @@
               } while( ((i == 0 || i == 3) 
                            && next < 2)
                        || ((i == 2 || i == 5) 
-                           && next == 1 && number[i-1] == 1)
+                           && (next == 1 && number[i-1] == 1))
                        || (i == 1
                            && next == 9) )
               number.push(next)
