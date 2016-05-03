@@ -5,11 +5,22 @@
     <title>Bogoselect by dconman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
+        function LeftPadWithZeros(number, length){
+            var str = '' + number;
+            while (str.length < length) {
+                str = '0' + str;
+            }
+        
+            return str;
+        }
         function generateNumber() {
-            var area = Math.trunc(Math.random() * 1000);
-            var front = Math.trunc(Math.random() * 1000);
-            var back = Math.trunc(Math.random() * 10000);
-            var number = '(' + area + ') ' + front + '-' + back;
+            var area = Math.trunc(100 + Math.random() * 900);
+            var front = Math.trunc( 100 + Math.random() * 900);
+            while 
+            var back = Math.trunc(1000 + Math.random() * 9000);
+            var backS = '' + back;
+            while( backS.length < 4 ) backS = '0' + backS;
+            var number = '(' + area + ') ' + front + '-' + backS;
             document.getElementById("number").value = number;
         }
         function addListeners() {
