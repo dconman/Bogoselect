@@ -19,7 +19,9 @@
             while 
             var back = Math.trunc(1000 + Math.random() * 9000);
             var backS = '' + back;
-            while( backS.length < 4 ) backS = '0' + backS;
+            while( backS.length < 4 ) {
+              backS = '0' + backS;
+            }
             var number = '(' + area + ') ' + front + '-' + backS;
             document.getElementById("number").value = number;
         }
