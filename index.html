@@ -5,25 +5,35 @@
     <title>Bogoselect by dconman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
-        function LeftPadWithZeros(number, length){
-            var str = '' + number;
-            while (str.length < length) {
-                str = '0' + str;
+        function convertArrayToNumber(total,currentValue, index,arr){
+            if(index == 1){
+              return ('(' + total)+currentValue;
             }
-        
-            return str;
+            if(index == 2){
+              return total + currentValue + ') ';
+            }
+            if(index == 5){
+              return total + currentValue + '-';
+            }
+            return total+currentValue;
         }
         function generateNumber() {
-            var area = Math.trunc(100 + Math.random() * 900);
-            var front = Math.trunc( 100 + Math.random() * 900);
-             
-            var back = Math.trunc(1000 + Math.random() * 9000);
-            var backS = '' + back;
-            while( backS.length < 4 ) {
-              backS = '0' + backS;
+            var number = []
+            for(var i = 0; i < 10; i++)
+            {
+              var next;
+              do{
+                next = Math.random();
+              } while( ((i == 0 || i == 3) 
+                           && next < 2)
+                       || ((i == 2 || i == 5) 
+                           && next == 1 && number[i-1] == 1)
+                       || (i == 1
+                           && next == 9) )
+              number.push(next)
             }
-            var number = '(' + area + ') ' + front + '-' + backS;
-            document.getElementById("number").value = number;
+            
+            document.getElementById("number").value = number.reduce(convertArrayToNumber);
         }
         function addListeners() {
           document.getElementById("generate").addEventListener("click", generateNumber);
